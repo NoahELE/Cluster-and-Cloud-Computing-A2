@@ -5,6 +5,6 @@ metadata:
   name: parameters
 data:
   ES_URL: "https://elasticsearch-master.elastic.svc.cluster.local:9200"
+  ES_DATABASE: "ccc-a2"
   ES_USERNAME: "elastic"
   ES_PASSWORD: "elastic"
-  ES_DATABASE: "ccc-a2"
