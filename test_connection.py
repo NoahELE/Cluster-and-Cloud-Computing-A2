@@ -1,6 +1,5 @@
-import logging
-
 from elasticsearch import Elasticsearch
+from flask import current_app
 
 from k8s_utils import config
 
@@ -10,7 +9,5 @@ client = Elasticsearch(host, basic_auth=basic_auth)
 
 
 def main():
-    logging.info("Checking connection to Elasticsearch")
-    ping = client.ping()
-    logging.info(f"Ping to Elasticsearch successful, {ping}")
+    current_app.logger.info("Checking connection to Elasticsearch")
     return client.info()
