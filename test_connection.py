@@ -1,5 +1,5 @@
 from elasticsearch import Elasticsearch
-from flask import current_app
+from flask import current_app, jsonify
 
 
 def main():
@@ -9,4 +9,4 @@ def main():
     basic_auth = ("elastic", "elastic")
     client = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
     current_app.logger.info("Checking connection to Elasticsearch")
-    return client.info().to_dict()
+    return jsonify(client.info().body)
