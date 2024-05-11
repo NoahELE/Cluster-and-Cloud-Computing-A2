@@ -11,7 +11,11 @@ es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 def main():
     latest_weather = get_latest_weather()
-    es.index(index="bom_melbourne_weather", document=latest_weather)
+    es.index(
+        index="bom_melbourne_weather",
+        id=latest_weather["datetime"],
+        document=latest_weather,
+    )
     return "OK"
 
 
