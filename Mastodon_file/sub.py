@@ -6,8 +6,8 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 #-----------------------------------------------------------------------------------------------
 #Get data from Mastodon and return the processed list of posts and the new maximum ID
-def get_timeline(mastodon, max_id, dead_line):
-    toots = mastodon.timeline_public(limit=40, max_id=max_id)
+def get_timeline(mastodon, max_id, dead_line, hashtag='melbourne'):
+    toots = mastodon.timeline_hashtag(hashtag, limit=40, max_id=max_id)
     toots_list = []
     new_maxid = None
 
