@@ -5,7 +5,7 @@ from elasticsearch import Elasticsearch
 
 melbourne_weather_url = "https://reg.bom.gov.au/fwo/IDV60901/IDV60901.95936.json"
 host = "https://elasticsearch-master.elastic.svc.cluster.local:9200"
-basic_auth = ("elastic", "elastic")
+basic_auth = ("elastic", "comp90024-elastic")
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 
