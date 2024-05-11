@@ -3,9 +3,15 @@ from datetime import datetime
 import requests
 from elasticsearch import Elasticsearch
 
+
+def secret(key: str) -> str:
+    with open(f"/secrets/default/secrets/{key}", "r", encoding="utf-8") as f:
+        return f.read()
+
+
 melbourne_weather_url = "https://reg.bom.gov.au/fwo/IDV60901/IDV60901.95936.json"
-host = "https://elasticsearch-master.elastic.svc.cluster.local:9200"
-basic_auth = ("elastic", "comp90024-elastic")
+host = secret("ES_URL")
+basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 

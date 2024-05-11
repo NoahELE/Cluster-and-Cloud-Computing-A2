@@ -1,8 +1,14 @@
+import os
+
+from dotenv import load_dotenv
 from elasticsearch import Elasticsearch
+
+load_dotenv()
+
 
 es = Elasticsearch(
     "https://localhost:9200",
-    basic_auth=("elastic", "elastic"),
+    basic_auth=(os.environ["ES_USERNAME"], os.environ["ES_PASSWORD"]),
     verify_certs=False,
     request_timeout=10,
 )
