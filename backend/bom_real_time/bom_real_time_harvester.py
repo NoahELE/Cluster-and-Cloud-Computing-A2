@@ -19,13 +19,16 @@ es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 def main():
     """Harvest latest weather data from BOM and index it in Elasticsearch"""
-    latest_weather = get_latest_weather()
-    es.index(
-        index="bom_melbourne_weather",
-        id=latest_weather["datetime"],
-        document=latest_weather,
-    )
-    return "OK"
+    try:
+        latest_weather = get_latest_weather()
+        es.index(
+            index="bom_melbourne_weather",
+            id=latest_weather["datetime"],
+            document=latest_weather,
+        )
+        return "OK"
+    except Exception as e:
+        return str(e)
 
 
 def get_latest_weather():

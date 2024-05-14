@@ -18,14 +18,19 @@ es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 def main():
     """Get average temperature of a day from Elasticsearch index"""
-    date_str = request.headers["X-Fission-Params-Date"]
-    dt = datetime.strptime(date_str, "%Y-%m-%d")
-    date_str = dt.strftime("%Y-%m-%d")
-    dt1 = dt + timedelta(days=1)
-    date_str1 = dt1.strftime("%Y-%m-%d")
-    resp = es.search(
-        "bom_melbourne_weather",
-        query={"range": {"datetime": {"gte": date_str, "lt": date_str1}}},
-    )
-    temps = [hit["_source"]["temperature"] for hit in resp["hits"]["hits"]]
-    return {"avg_temp": sum(temps) / len(temps)}
+    try:
+        date_str = request.headers["X-Fission-Params-Date"]
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+        date_str = dt.strftime("%Y-%m-%d")
+        dt1 = dt + timedelta(days=1)
+        date_str1 = dt1.strftime("%Y-%m-%d")
+        resp = es.search(
+            index="bom_melbourne_weather",
+            query={"range": {"datetime": {"gte": date_str, "lt": date_str1}}},
+        )
+        temps = [hit["_source"]["temperature"] for hit in resp["hits"]["hits"]]
+        return {"ok": True, "avg_temp": sum(temps) / len(temps)}
+    except ValueError as e:
+        return {"ok": False, "error": f"date str format is wrong: {str(e)}"}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
