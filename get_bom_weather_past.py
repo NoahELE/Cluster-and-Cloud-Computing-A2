@@ -1,5 +1,5 @@
 import os
-
+import json
 import pandas as pd
 import requests
 
@@ -30,7 +30,6 @@ def download_weather(location, code, year, month):
                 "Minimum temperature (°C)",
                 "Maximum temperature (°C)",
                 "Rainfall (mm)",
-                "Sunshine (hours)",
                 "Speed of maximum wind gust (km/h)",
             ]
         ]
@@ -58,18 +57,18 @@ def download_weather(location, code, year, month):
 # Iterate over each month from April 2023 to April 2024 for each station
 station = {
     "Melbourne (Olympic Park)": "3033",
-    "Melbourne Airport": "3049",
-    "Avalon": "3003",
-    "Cerberus": "3014",
-    "Coldstream": "3016",
-    "Ferny Creek": "3102",
-    "Frankston (Ballam Park)": "3112",
-    "Geelong": "3030",
-    "Laverton": "3043",
-    "Moorabbin": "3052",
-    "Rhyll": "3070",
-    "Scoresby": "3072",
-    "Sheoaks": "3073",
+    # "Melbourne Airport": "3049",
+    # "Avalon": "3003",
+    # "Cerberus": "3014",
+    # "Coldstream": "3016",
+    # "Ferny Creek": "3102",
+    # "Frankston (Ballam Park)": "3112",
+    # "Geelong": "3030",
+    # "Laverton": "3043",
+    # "Moorabbin": "3052",
+    # "Rhyll": "3070",
+    # "Scoresby": "3072",
+    # "Sheoaks": "3073",
 }
 
 
@@ -85,5 +84,25 @@ if not os.path.exists("data/weather_json"):
 for location, code in station.items():
     for year in [2023, 2024]:
         for month in range(1, 13):
-            if (year == 2023 and month >= 4) or (year == 2024 and month <= 4):
+            if (year == 2023 and month >= 4) or (year == 2024 and month <= 5):
                 download_weather(location, code, year, month)
+
+
+def merge_json_files(directory_path, output_file_path):
+    merged_data = []
+
+    for file_name in os.listdir(directory_path):
+        if file_name.endswith('.json'):
+            file_path = os.path.join(directory_path, file_name)
+            with open(file_path, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+                merged_data.extend(data)
+
+    with open(output_file_path, 'w', encoding='utf-8') as output_file:
+        json.dump(merged_data, output_file, indent=4)
+        print('Successfully merged and saved data.')
+
+directory_path = 'data/weather_json'
+output_file_path = 'data/weather_json/gathered_bom_weather_past.json'
+merge_json_files(directory_path, output_file_path)
+
