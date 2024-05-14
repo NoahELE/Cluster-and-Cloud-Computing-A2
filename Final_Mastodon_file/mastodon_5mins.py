@@ -63,7 +63,7 @@ def get_timeline(CONTIN_DATA, mastodon, max_id, dead_line, hashtag='melbourne'):
 
             toot_info = {
                 "id":toot['id'],
-                "creat_time":toot['created_at'].isoformat(),
+                "creat_time":mel_time(toot['created_at'].isoformat()),
                 "content":clean_content,
                 "language":toot['language'],
                 "sentiment":sentiment_score,                   
@@ -99,6 +99,14 @@ def get_senti_vader(content):
     result = SentimentIntensityAnalyzer().polarity_scores(content)
     return result['compound']
 
+#-----------------------------------------------------------------------------------------------
+#Change UTC to AEST
+def mel_time(time):
+    utc_time = datetime.fromisoformat(time)
+    mel_tz = pytz.timezone("Australia/Melbourne")
+    #utc_time = utc_zone.localize(utc_time)
+    melbourne_time = utc_time.astimezone(mel_tz)
+    return melbourne_time.isoformat()
 
 #-----------------------------------------------------------------------------------------------
 #Clean the content of toots and get sentiment score
