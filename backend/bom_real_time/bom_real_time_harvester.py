@@ -1,3 +1,4 @@
+# Xinhao Chen 1166113
 from datetime import datetime
 
 import requests
@@ -5,6 +6,7 @@ from elasticsearch import Elasticsearch
 
 
 def secret(key: str) -> str:
+    """Read secret from k8s secret volume"""
     with open(f"/secrets/default/secrets/{key}", "r", encoding="utf-8") as f:
         return f.read()
 
@@ -16,6 +18,7 @@ es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 
 def main():
+    """Harvest latest weather data from BOM and index it in Elasticsearch"""
     latest_weather = get_latest_weather()
     es.index(
         index="bom_melbourne_weather",
@@ -26,6 +29,7 @@ def main():
 
 
 def get_latest_weather():
+    """Get latest weather data from BOM API"""
     r = requests.get(melbourne_weather_url)
     weather_json = r.json()
     latest_weather = weather_json["observations"]["data"][0]
