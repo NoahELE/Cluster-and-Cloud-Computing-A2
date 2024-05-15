@@ -7,31 +7,29 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from elasticsearch import Elasticsearch
 
 #Load environment variables from .env file and initialize Mastodon
+def secret(key: str) -> str:
+    """Read secret from k8s secret volume"""
+    with open(f"/secrets/default/secrets/{key}", "r", encoding="utf-8") as f:
+        return f.read()
 
 
-client_key = "YbVPW_Huu-pSe2XxCj1HKUjB65E_a61B4gBAJ4VKffY"
-client_secret = "DWpg0m0Os-VnidnfYJVFvfCEEGKxs7ZmCdkaagjUnCI"
-access_token = "OTPi29TLCpygo_S5XC9Tpb6GbcxGj9qeSCsRrMVBask"
-
-host = "https://elasticsearch-master.elastic.svc.cluster.local:9200"
+host = secret("ES_URL")
 # host = "https://127.0.0.1:9200"
-basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
+# basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
+basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
-
-mastodon = Mastodon(client_id=client_key,
-                    client_secret=client_secret,
-                    access_token=access_token,
-                    api_base_url='https://aus.social')
+mastodon = Mastodon(api_base_url='https://aus.social')
                     # api_base_url='https://aus.social/explore')
 #Set the file name for saving data
 # file_name = f"leatest_data_mastodon.json"
+
 
 def main():
     try:
         utc_zone = pytz.utc
         start_date = datetime.now(utc_zone)
         dead_line = start_date - timedelta(minutes=30)
-        toots_list = get_timeline(mastodon, dead_line)
+        toots_list = get_timeline(mastodon)
         for toot in toots_list:
             es.index(
                 index="mastodon_melbourne",
@@ -45,17 +43,16 @@ def main():
 
 #-----------------------------------------------------------------------------------------------
 #Get data from Mastodon and return the processed list of posts and the new maximum ID
-def get_timeline(mastodon, dead_line, hashtag='melbourne'):
+def get_timeline(mastodon, hashtag='melbourne'):
     toots = mastodon.timeline_hashtag(hashtag, limit=20)
     toots_list = []
 
     if toots:
         for toot in toots:
-            creat_date = toot['created_at']
-            if creat_date < dead_line:
-                print('End to get data')
-                break
-
+            # creat_date = toot['created_at']
+            # if creat_date < dead_line:
+            #     print('End to get data')
+            #     break
             clean_content, sentiment_score = clean_toot(toot['content'])
 
             toot_info = {
@@ -63,7 +60,7 @@ def get_timeline(mastodon, dead_line, hashtag='melbourne'):
                 "creat_time":mel_time(toot['created_at'].isoformat()),
                 "content":clean_content,
                 "language":toot['language'],
-                "sentiment":sentiment_score,                   
+                "sentiment":sentiment_score,
                 "tag":[tag['name'] for tag in toot['tags']]
             }
             toots_list.append(toot_info)

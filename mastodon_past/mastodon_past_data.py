@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from datetime import datetime, timedelta
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+
 #Load environment variables from .env file and initialize Mastodon
 load_dotenv()
 
@@ -163,11 +164,15 @@ def clean_toot(content):
 max_id = None
 all_toots = []
 keep_going = True
+num_data_harvested = 0
 
 while keep_going:
     try:
         #Successfully obtain data and add it to file
         toots_list, new_maxid, CONTIN_DATA = get_timeline(CONTIN_DATA, mastodon, max_id, dead_line)
+        num_data_harvested += len(toots_list)
+        if (num_data_harvested >220):
+            break
         if not CONTIN_DATA:
             break
         if not toots_list:
