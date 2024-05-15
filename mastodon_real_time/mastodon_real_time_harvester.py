@@ -4,10 +4,10 @@ from textblob import TextBlob
 from mastodon import Mastodon
 from datetime import datetime, timedelta
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from datetime import datetime
 from elasticsearch import Elasticsearch
 
 #Load environment variables from .env file and initialize Mastodon
+
 
 client_key = "YbVPW_Huu-pSe2XxCj1HKUjB65E_a61B4gBAJ4VKffY"
 client_secret = "DWpg0m0Os-VnidnfYJVFvfCEEGKxs7ZmCdkaagjUnCI"
@@ -18,38 +18,35 @@ host = "https://elasticsearch-master.elastic.svc.cluster.local:9200"
 basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
-mastodon = Mastodon(client_id=client_key, 
-                    client_secret=client_secret, 
+mastodon = Mastodon(client_id=client_key,
+                    client_secret=client_secret,
                     access_token=access_token,
                     api_base_url='https://aus.social')
-                    #api_base_url='https://aus.social/explore')
-
-
-#-----------------------------------------------------------------------------------------------
-#Get all time parameters
-utc_zone = pytz.utc
-start_date = datetime.now(utc_zone)
-dead_line = start_date - timedelta(minutes=200)
-
+                    # api_base_url='https://aus.social/explore')
 #Set the file name for saving data
-file_name = f"leatest_data_mastodon.json"
-
+# file_name = f"leatest_data_mastodon.json"
 
 def main():
-    toots_list = get_timeline(mastodon, dead_line)
-    for toot in toots_list:
-        es.index(
-            index="mastodon_melbourne",
-            id=toot["id"],
-            document=toot,
-        )
-    # append_data(file_name, toots_list)
-    return "OK"
+    try:
+        utc_zone = pytz.utc
+        start_date = datetime.now(utc_zone)
+        dead_line = start_date - timedelta(minutes=30)
+        toots_list = get_timeline(mastodon, dead_line)
+        for toot in toots_list:
+            es.index(
+                index="mastodon_melbourne",
+                id=toot["id"],
+                document=toot,
+            )
+        # append_data(file_name, toots_list)
+        return "OK"
+    except Exception as e:
+        return str(e)
 
 #-----------------------------------------------------------------------------------------------
 #Get data from Mastodon and return the processed list of posts and the new maximum ID
 def get_timeline(mastodon, dead_line, hashtag='melbourne'):
-    toots = mastodon.timeline_hashtag(hashtag, limit=40)
+    toots = mastodon.timeline_hashtag(hashtag, limit=20)
     toots_list = []
 
     if toots:
