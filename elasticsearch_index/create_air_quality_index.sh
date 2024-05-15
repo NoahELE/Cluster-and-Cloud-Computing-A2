@@ -10,8 +10,12 @@ curl -XPUT -k 'https://127.0.0.1:9200/air_quality' \
     },
     "mappings": {
         "properties": {
-            "datetime_AEST": {
-                "type": "date"
+            "date": {
+                "type": "date",
+                "format": "yyyy-MM-dd"
+            },
+            "time": {
+                "type": "text"
             },
             "location_id": {
                 "type": "integer"

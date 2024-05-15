@@ -3,18 +3,17 @@ import os
 from elasticsearch import Elasticsearch, helpers
 from datetime import datetime
 
-def format_datetime(datetime_str):
-    date_obj = datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S')
-    formatted_datetime = date_obj.strftime('%Y-%m-%dT%H:%M:%S')
-    return formatted_datetime
+def format_date_time(date_str, time_str):
+    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+    formatted_date = date_obj.strftime('%Y-%m-%d')
+    return formatted_date, time_str
 
 def insert_air_quality(file_path, index_name):
     # Establish connection to Elasticsearch
     es = Elasticsearch(
         'https://127.0.0.1:9200',
         basic_auth=('elastic', 'gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x'),
-        verify_certs=False,
-        timeout=60
+        verify_certs=False
     )
     
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -22,10 +21,13 @@ def insert_air_quality(file_path, index_name):
 
     insert_data = []
     for record in data:
-        formatted_datetime = format_datetime(record['datetime_AEST'])
-        record['datetime_AEST'] = formatted_datetime 
+        formatted_date, formatted_time = format_date_time(record['date'], record['time'])
+        record['date'] = formatted_date
+        record['time'] = formatted_time
+        # Combine date and time to create a unique ID for each record
+        record_id = f"{formatted_date}_{formatted_time}"
         insert_data.append(
-            {'_index': index_name, '_id': formatted_datetime, '_source': record}
+            {'_index': index_name, '_id': record_id, '_source': record}
         )
 
     try:
