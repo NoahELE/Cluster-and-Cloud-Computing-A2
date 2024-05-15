@@ -1,20 +1,22 @@
-import os
 import re
-import json
 import pytz
-import time
 from textblob import TextBlob
 from mastodon import Mastodon
-from dotenv import load_dotenv
 from datetime import datetime, timedelta
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from datetime import datetime
+from elasticsearch import Elasticsearch
 
 #Load environment variables from .env file and initialize Mastodon
-load_dotenv()
 
-client_key = os.getenv('CLIENT_KEY_AUS')
-client_secret = os.getenv('CLIENT_SECRET_AUS')
-access_token = os.getenv('ACCESS_TOKEN_AUS')
+client_key = "YbVPW_Huu-pSe2XxCj1HKUjB65E_a61B4gBAJ4VKffY"
+client_secret = "DWpg0m0Os-VnidnfYJVFvfCEEGKxs7ZmCdkaagjUnCI"
+access_token = "OTPi29TLCpygo_S5XC9Tpb6GbcxGj9qeSCsRrMVBask"
+
+host = "https://elasticsearch-master.elastic.svc.cluster.local:9200"
+# host = "https://127.0.0.1:9200"
+basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
+es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 mastodon = Mastodon(client_id=client_key, 
                     client_secret=client_secret, 
@@ -22,41 +24,39 @@ mastodon = Mastodon(client_id=client_key,
                     api_base_url='https://aus.social')
                     #api_base_url='https://aus.social/explore')
 
-'''
-client_key = os.getenv('CLIENT_KEY_MAS')
-client_secret = os.getenv('CLIENT_SECRET_MAS')
-access_token = os.getenv('ACCESS_TOKEN_MAS')
-
-
-mastodon = Mastodon(client_id=client_key, 
-                    client_secret=client_secret, 
-                    access_token=access_token,
-                    api_base_url='https://mastodon.social')'''
 
 #-----------------------------------------------------------------------------------------------
 #Get all time parameters
 utc_zone = pytz.utc
 start_date = datetime.now(utc_zone)
-dead_line = start_date - timedelta(minutes=5)
-CONTIN_DATA = True
+dead_line = start_date - timedelta(minutes=200)
 
 #Set the file name for saving data
 file_name = f"leatest_data_mastodon.json"
 
 
+def main():
+    toots_list = get_timeline(mastodon, dead_line)
+    for toot in toots_list:
+        es.index(
+            index="mastodon_melbourne",
+            id=toot["id"],
+            document=toot,
+        )
+    # append_data(file_name, toots_list)
+    return "OK"
+
 #-----------------------------------------------------------------------------------------------
 #Get data from Mastodon and return the processed list of posts and the new maximum ID
-def get_timeline(CONTIN_DATA, mastodon, max_id, dead_line, hashtag='melbourne'):
-    toots = mastodon.timeline_hashtag(hashtag, limit=40, max_id=max_id)
+def get_timeline(mastodon, dead_line, hashtag='melbourne'):
+    toots = mastodon.timeline_hashtag(hashtag, limit=40)
     toots_list = []
-    new_maxid = None
 
     if toots:
         for toot in toots:
             creat_date = toot['created_at']
             if creat_date < dead_line:
                 print('End to get data')
-                CONTIN_DATA = False
                 break
 
             clean_content, sentiment_score = clean_toot(toot['content'])
@@ -71,21 +71,19 @@ def get_timeline(CONTIN_DATA, mastodon, max_id, dead_line, hashtag='melbourne'):
             }
             toots_list.append(toot_info)
 
-        new_maxid = toots[-1]['id']
-
-    return toots_list, new_maxid, CONTIN_DATA
+    return toots_list
 
 
 #-----------------------------------------------------------------------------------------------
 #Save data to file
-def append_data(file_name, new_data):
-
-    with open(file_name, 'a') as f:
-        #for i in all_data:
-        for i in new_data:
-            json.dump(i, f, ensure_ascii=False, separators=(',', ':'))
-        #json.dump(all_data, f, ensure_ascii=False,indent=4, separators=(',', ':'))
-            f.write('\n')
+# def append_data(file_name, new_data):
+#
+#     with open(file_name, 'a') as f:
+#         #for i in all_data:
+#         for i in new_data:
+#             json.dump(i, f, ensure_ascii=False, separators=(',', ':'))
+#         #json.dump(all_data, f, ensure_ascii=False,indent=4, separators=(',', ':'))
+#             f.write('\n')
 
 
 #-----------------------------------------------------------------------------------------------
@@ -134,36 +132,10 @@ def clean_toot(content):
 
     return content_list, sentiment_score
 
-
 #-----------------------------------------------------------------------------------------------
 #Get data from Mastodon until specified deadline
-max_id = None
-all_toots = []
-keep_going = True
 
-while keep_going:
-    try:
-        #Successfully obtain data and add it to file
-        toots_list, new_maxid, CONTIN_DATA = get_timeline(CONTIN_DATA, mastodon, max_id, dead_line)
-        if not CONTIN_DATA:
-            break
-        if not toots_list:
-            print('No data returned in this iteration.')
-            time.sleep(3)
-            continue
 
-        append_data(file_name, toots_list)
-        
-    except Exception as e:
-        #When error occurs, printing the error type and extending the break to 5 seconds
-        print(f"An error occurred: {e}")  
-        time.sleep(5)
-        continue 
 
-    time.sleep(1)
-        
-    if not new_maxid or new_maxid == max_id:
-        keep_going = False 
-    max_id = new_maxid
 
 
