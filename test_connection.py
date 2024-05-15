@@ -1,11 +1,11 @@
+import os
+
+from dotenv import load_dotenv
 from elasticsearch import Elasticsearch
-from flask import current_app, jsonify
 
+load_dotenv()
 
-def main():
-    host = "https://elasticsearch-master.elastic.svc.cluster.local:9200"
-    basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
-    client = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
-    current_app.logger.info("Checking connection to Elasticsearch")
-    return jsonify(client.info().body)
-
+host = "https://localhost:9200"
+basic_auth = (os.environ["ES_USERNAME"], os.environ["ES_PASSWORD"])
+es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False, request_timeout=10)
+print(es.info())

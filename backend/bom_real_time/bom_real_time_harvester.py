@@ -1,25 +1,38 @@
+# Xinhao Chen 1166113
 from datetime import datetime
 
 import requests
 from elasticsearch import Elasticsearch
 
+
+def secret(key: str) -> str:
+    """Read secret from k8s secret volume"""
+    with open(f"/secrets/default/secrets/{key}", "r", encoding="utf-8") as f:
+        return f.read()
+
+
 melbourne_weather_url = "https://reg.bom.gov.au/fwo/IDV60901/IDV60901.95936.json"
-host = "https://elasticsearch-master.elastic.svc.cluster.local:9200"
-basic_auth = ("elastic", "comp90024-elastic")
+host = secret("ES_URL")
+basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 
 def main():
-    latest_weather = get_latest_weather()
-    es.index(
-        index="bom_melbourne_weather",
-        id=latest_weather["datetime"],
-        document=latest_weather,
-    )
-    return "OK"
+    """Harvest latest weather data from BOM and index it in Elasticsearch"""
+    try:
+        latest_weather = get_latest_weather()
+        es.index(
+            index="bom_melbourne_weather",
+            id=latest_weather["datetime"],
+            document=latest_weather,
+        )
+        return "OK"
+    except Exception as e:
+        return str(e)
 
 
 def get_latest_weather():
+    """Get latest weather data from BOM API"""
     r = requests.get(melbourne_weather_url)
     weather_json = r.json()
     latest_weather = weather_json["observations"]["data"][0]
