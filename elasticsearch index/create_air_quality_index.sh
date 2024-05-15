@@ -11,12 +11,7 @@ curl -XPUT -k 'https://127.0.0.1:9200/air_quality' \
     "mappings": {
         "properties": {
             "datetime_AEST": {
-                "type": "date",
-                "format": "yyyy-MM-dd HH:mm:ss"
-            },
-            "datetime_local": {
-                "type": "date",
-                "format": "yyyy-MM-dd HH:mm:ss"
+                "type": "date"
             },
             "location_id": {
                 "type": "integer"
@@ -25,8 +20,7 @@ curl -XPUT -k 'https://127.0.0.1:9200/air_quality' \
                 "type": "text"
             },
             "BPM2.5": {
-                "type": "float",
-                "null_value": "NULL"  // Handling null values, assumes you want to store the string "NULL" when null is encountered
+                "type": "float"
             }
         }
     }

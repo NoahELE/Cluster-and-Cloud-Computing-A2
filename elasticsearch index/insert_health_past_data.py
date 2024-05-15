@@ -1,14 +1,8 @@
 import json
 import os
 from elasticsearch import Elasticsearch, helpers
-from datetime import datetime
 
-def format_date(date_str):
-    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
-    formatted_date = date_obj.strftime('%Y-%m-%d')
-    return formatted_date
-
-def insert_past_weather(file_path, index_name):
+def insert_health_data(file_path, index_name):
     # Establish connection to Elasticsearch
     es = Elasticsearch(
         'https://127.0.0.1:9200',
@@ -21,10 +15,12 @@ def insert_past_weather(file_path, index_name):
 
     insert_data = []
     for record in data:
-        formatted_date = format_date(record['Date'])
-        record['Date'] = formatted_date 
         insert_data.append(
-            {'_index': index_name, '_id': formatted_date, '_source': record}
+            {
+                '_index': index_name,
+                '_id': record['sa2_code_2021'], 
+                '_source': record
+            }
         )
 
     try:
@@ -33,9 +29,9 @@ def insert_past_weather(file_path, index_name):
     except helpers.BulkIndexError as e:
         print("Error uploading data:", e.errors)
     except Exception as e:
-        print("Error uploading data:", str(e)) 
+        print("Error uploading data:", str(e))
 
-
-file_path = 'data/weather_json/gathered_bom_weather_past.json'
-index_name = 'bom_melbourne_weather_past'
-insert_past_weather(file_path, index_name)
+# Define file path and index name
+file_path = 'data/asthma_copd/asthma_copd_merged.json'
+index_name = 'asthma_copd'
+insert_health_data(file_path, index_name)
