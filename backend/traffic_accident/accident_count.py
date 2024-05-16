@@ -2,6 +2,7 @@ import logging, json
 from flask import current_app, request
 from elasticsearch import Elasticsearch, helpers
 from datetime import datetime, timedelta
+from haversine import haversine, Unit
 
 
 def secret(key: str) -> str:
@@ -18,6 +19,11 @@ def main():
     """
     Count accidents of a day from Elasticsearch index.
     """
+
+    # latitude and longitude of melbourne centre
+    melbourne_center = (-37.8136, 144.9631)
+    radius_km = 15  # 15km range
+
     try:
         date_str = request.headers["X-Fission-Params-Date"]
         dt = datetime.strptime(date_str, "%Y-%m-%d")
@@ -27,8 +33,25 @@ def main():
         resp = es.search(
             index="traffic",
             query={"range": {"ACCIDENT_DATE": {"gte": date_str, "lt": date_str1}}},
+            size=10000
         )
-        return {"ok": True, "accident_count": resp["hits"]["total"]["value"]}
+
+        hits = resp['hits']['hits']
+        accident_count = len(hits)
+        center_accidents = 0
+        
+        for hit in hits:
+            source = hit['_source']
+            accident_location = (source['LATITUDE'], source['LONGITUDE'])
+            
+            # calculate the distance between accident location and melbourne central
+            distance = haversine(melbourne_center, accident_location, unit=Unit.KILOMETERS)
+            
+            if distance <= radius_km:
+                center_accidents += 1
+        
+        return {"ok": True, "accident_count": accident_count, "center_accidents": center_accidents}
+        # return {"ok": True, "accident_count": resp["hits"]["total"]["value"]}
     except ValueError as e:
         return {"ok": False, "error": f"date str format is wrong: {str(e)}"}
     except Exception as e:
