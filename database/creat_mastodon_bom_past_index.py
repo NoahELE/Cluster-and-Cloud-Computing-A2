@@ -17,7 +17,7 @@ User = Elasticsearch(
 )
 
 
-#mastodon合并数据
+#merge mastodon data
 mastodon_tempo_result = User.search(index='mastodon_melbourne_past', body={
     "size": 0,
     "aggs": {
@@ -73,7 +73,7 @@ for bucket in mastodon_tempo_result["aggregations"]["by_date"]["buckets"]:
     }
     
 
-#bom合并数据
+#merge bom data
 bom_tempo_result =  User.search(index='bom_melbourne_weather_past', body={
     "size":450,
     "_source":["Date", "Minimum temperature (C)", "Maximum temperature (C)", 

@@ -11,8 +11,6 @@ FILE_PATH = '/Users/lyyyyyyy/Desktop/past_data_mastodon.json' #need to changed
 
 API_KEY = os.getenv('API_KEY_ELASTIC')
 
-#print(API_KEY)
-
 
 User = Elasticsearch(
     "https://localhost:9200",
