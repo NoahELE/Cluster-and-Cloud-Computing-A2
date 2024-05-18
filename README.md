@@ -14,12 +14,7 @@ The repository contains the code and data for the COMP90024 Cluster and Cloud Co
 - Deploy `Kubernetes` cluster on `OpenStack` machines
 - Deploy `Fission`, `Elasticsearch`, `Kibana` on `Kubernetes` cluster
 - Store credentials like `ES_URL`, `ES_USERNAME` and `ES_PASSWORD` to `Kubernetes` secrets
-- Create functions inside `backend` directory on `Fission` with the following commands
-  - `fission pkg create --source <function_directory> --env python`
-  - `fission fn create --name <function_name> --pkg <pkg_name> --entrypoint <entrypoint> --secret <secret_name>`
-- Create triggers inside `backend` directory on `Fission` with the following commands
-  - `fission timer create --name <timer_name> --function <function_name> --cron <cron_expression>`
-  - `fission httptrigger create --name <http_route_name> --function <function_name> --url <url> --method <method>`
+- Create the functions with `fission spec apply --wait`
 - Open the `Jupyter` notebook in `frontend` and run the cells to perform analysis
 
 ## Data Sources
