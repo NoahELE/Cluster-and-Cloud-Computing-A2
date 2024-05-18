@@ -2,7 +2,7 @@ apiVersion: fission.io/v1
 kind: Function
 metadata:
   creationTimestamp: null
-  name: get-bom-mastodon-by-date
+  name: get-num-toots-by-date
 spec:
   InvokeStrategy:
     ExecutionStrategy:
@@ -19,9 +19,9 @@ spec:
   functionTimeout: 60
   idletimeout: 120
   package:
-    functionName: get_bom_mastodon_by_date.main
+    functionName: get_num_toots_by_date.main
     packageref:
-      name: get-bom-mastodon-by-date
+      name: mastodon-real-time
       namespace: ""
   requestsPerPod: 1
   resources: {}
