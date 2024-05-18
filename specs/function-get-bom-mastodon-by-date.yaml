@@ -19,7 +19,7 @@ spec:
   functionTimeout: 60
   idletimeout: 120
   package:
-    functionName: bom_mastodon.main
+    functionName: get_bom_mastodon_by_date.main
     packageref:
       name: get-bom-mastodon-by-date
       namespace: ""
