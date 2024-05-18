@@ -1,0 +1,22 @@
+apiVersion: fission.io/v1
+kind: HTTPTrigger
+metadata:
+  creationTimestamp: null
+  name: bom-real-time-avg-day-temp
+spec:
+  createingress: false
+  functionref:
+    functionweights: null
+    name: bom-real-time-avg-day-temp
+    type: name
+  host: ""
+  ingressconfig:
+    annotations: null
+    host: '*'
+    path: /bom-real-time/avg-day-temp/{date}
+    tls: ""
+  method: ""
+  methods:
+  - GET
+  prefix: ""
+  relativeurl: /bom-real-time/avg-day-temp/{date}

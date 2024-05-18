@@ -1,0 +1,30 @@
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: bom-real-time-avg-day-temp
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: python
+    namespace: ""
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    functionName: bom_real_time_avg_day_temp.main
+    packageref:
+      name: bom-real-time
+      namespace: ""
+  requestsPerPod: 1
+  resources: {}
+  secrets:
+  - name: secrets
+    namespace: ""
