@@ -1,5 +1,5 @@
 include:
-- get_bom_mastodon_by_date/get_bom_mastodon_by_date.zip
+- bom_mastodon/bom_mastodon.zip
 kind: ArchiveUploadSpec
 name: get-bom-mastodon-by-date-get-bom-mastodon-by-date-zip-SmEu
 
