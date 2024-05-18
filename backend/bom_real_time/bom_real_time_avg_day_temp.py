@@ -26,6 +26,7 @@ def main():
         date_str1 = dt1.strftime("%Y-%m-%d")
         resp = es.search(
             index="bom_melbourne_weather",
+            size=100,
             query={"range": {"datetime": {"gte": date_str, "lt": date_str1}}},
         )
         temps = [hit["_source"]["temperature"] for hit in resp["hits"]["hits"]]

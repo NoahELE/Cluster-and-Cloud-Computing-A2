@@ -6,3 +6,10 @@ def test_bom_avg_day_temp():
     resp_json = resp.json()
     assert resp_json["ok"]
     assert isinstance(resp_json["avg_temp"], float)
+
+
+def test_bom_avg_day_temp_malformed_date():
+    resp = requests.get("http://127.0.0.1:9090/bom-real-time/avg-day-temp/aaa")
+    resp_json = resp.json()
+    assert not resp_json["ok"]
+    assert isinstance(resp_json["error"], str)
