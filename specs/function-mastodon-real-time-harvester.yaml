@@ -2,7 +2,7 @@ apiVersion: fission.io/v1
 kind: Function
 metadata:
   creationTimestamp: null
-  name: get-bom-mastodon-by-date
+  name: mastodon-real-time-harvester
 spec:
   InvokeStrategy:
     ExecutionStrategy:
@@ -19,9 +19,9 @@ spec:
   functionTimeout: 60
   idletimeout: 120
   package:
-    functionName: get_bom_mastodon_by_date.main
+    functionName: mastodon_real_time_harvester.main
     packageref:
-      name: get-bom-mastodon-by-date
+      name: mastodon-real-time
       namespace: ""
   requestsPerPod: 1
   resources: {}
