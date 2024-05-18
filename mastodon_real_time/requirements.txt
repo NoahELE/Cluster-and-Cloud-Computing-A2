@@ -1,0 +1,11 @@
+pytz
+tqdm
+Mastodon.py
+requests
+textblob
+vaderSentiment
+elasticsearch
+flask
+
+
+

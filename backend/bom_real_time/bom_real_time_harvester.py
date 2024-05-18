@@ -48,7 +48,7 @@ def get_latest_weather():
 
     return {
         "datetime": dt_str,
-        "temperature": temperature,
+            "temperature": temperature,
         "pressure": pressure,
         "rainfall": rainfall,
         "relative_humidity": relative_humidity,
