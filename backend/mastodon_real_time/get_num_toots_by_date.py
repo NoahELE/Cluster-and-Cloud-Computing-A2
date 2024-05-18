@@ -1,4 +1,3 @@
-import json
 from datetime import datetime, timedelta
 
 from elasticsearch import Elasticsearch
@@ -9,8 +8,6 @@ def secret(key: str) -> str:
     with open(f"/secrets/default/secrets/{key}", "r", encoding="utf-8") as f:
         return f.read()
 
-# host = "https://127.0.0.1:9200"
-# basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
 host = secret("ES_URL")
 basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
