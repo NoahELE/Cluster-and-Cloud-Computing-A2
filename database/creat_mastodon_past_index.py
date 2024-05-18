@@ -5,8 +5,8 @@ from elasticsearch import Elasticsearch, helpers
 
 load_dotenv()
 
-INDEX_NAME = 'mastodon_melbourne_past'  #need to changed
-FILE_PATH = '/Users/lyyyyyyy/Desktop/past_data_mastodon.json' #need to changed
+INDEX_NAME = 'mastodon_melbourne_past'  
+FILE_PATH = 'data/mastodon_past/mastodon_melbourne_past_data.json' 
 
 
 API_KEY = os.getenv('API_KEY_ELASTIC')

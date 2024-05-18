@@ -57,7 +57,7 @@ CONTIN_DATA = True
 pbar = tqdm(total= (start_date-dead_line).days)
 
 #Set the file name for saving data
-file_name = f"past_data_mastodon.json"
+file_name = f"mastodon_melbourne_past_data.json"
 
 
 #-----------------------------------------------------------------------------------------------

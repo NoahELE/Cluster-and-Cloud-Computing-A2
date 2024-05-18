@@ -130,7 +130,7 @@ for date in mastodon_data:
         merge_data.append(combind_entry)
 
 #----------------------------------------
-INDEX_NAME = 'mastodon_bom_past'  #need to changed
+INDEX_NAME = 'mastodon_bom_past'  
 #Upload data to elastic
 def create_index():
     index_content = {
