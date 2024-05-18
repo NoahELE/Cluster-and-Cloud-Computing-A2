@@ -1,6 +1,5 @@
 # folders
-data/weather_csv/
-data/weather_json/
+data/weather_csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -165,3 +164,4 @@ cython_debug/
 
 .vscode/
 secrets.yaml
+read_shp.ipynb

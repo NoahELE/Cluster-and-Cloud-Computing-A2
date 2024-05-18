@@ -1,0 +1,93 @@
+[
+  {
+    "Date":"2024-05-1",
+    "Minimum temperature (C)":8.2,
+    "Maximum temperature (C)":18.8,
+    "Rainfall (mm)":0.2,
+    "Speed of maximum wind gust (km\/h)":28.0
+  },
+  {
+    "Date":"2024-05-2",
+    "Minimum temperature (C)":8.3,
+    "Maximum temperature (C)":16.6,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":19.0
+  },
+  {
+    "Date":"2024-05-3",
+    "Minimum temperature (C)":6.6,
+    "Maximum temperature (C)":17.1,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":17.0
+  },
+  {
+    "Date":"2024-05-4",
+    "Minimum temperature (C)":5.9,
+    "Maximum temperature (C)":16.4,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":15.0
+  },
+  {
+    "Date":"2024-05-5",
+    "Minimum temperature (C)":8.4,
+    "Maximum temperature (C)":18.3,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":30.0
+  },
+  {
+    "Date":"2024-05-6",
+    "Minimum temperature (C)":9.6,
+    "Maximum temperature (C)":19.7,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":28.0
+  },
+  {
+    "Date":"2024-05-7",
+    "Minimum temperature (C)":8.3,
+    "Maximum temperature (C)":16.4,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":17.0
+  },
+  {
+    "Date":"2024-05-8",
+    "Minimum temperature (C)":10.2,
+    "Maximum temperature (C)":18.3,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":15.0
+  },
+  {
+    "Date":"2024-05-9",
+    "Minimum temperature (C)":9.7,
+    "Maximum temperature (C)":16.6,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":17.0
+  },
+  {
+    "Date":"2024-05-10",
+    "Minimum temperature (C)":12.7,
+    "Maximum temperature (C)":17.1,
+    "Rainfall (mm)":14.0,
+    "Speed of maximum wind gust (km\/h)":13.0
+  },
+  {
+    "Date":"2024-05-11",
+    "Minimum temperature (C)":12.8,
+    "Maximum temperature (C)":19.2,
+    "Rainfall (mm)":1.8,
+    "Speed of maximum wind gust (km\/h)":28.0
+  },
+  {
+    "Date":"2024-05-12",
+    "Minimum temperature (C)":8.6,
+    "Maximum temperature (C)":18.7,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":15.0
+  },
+  {
+    "Date":"2024-05-13",
+    "Minimum temperature (C)":9.2,
+    "Maximum temperature (C)":null,
+    "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":null
+  }
+]

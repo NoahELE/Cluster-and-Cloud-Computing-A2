@@ -1,0 +1,25 @@
+include:
+- backend/traffic_accident/traffic-accident.zip
+kind: ArchiveUploadSpec
+name: backend-traffic-accident-traffic-accident-zip-0yxX
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: traffic-accident
+spec:
+  buildcmd: ./build.sh
+  deployment:
+    checksum: {}
+  environment:
+    name: python
+    namespace: ""
+  source:
+    checksum: {}
+    type: url
+    url: archive://backend-traffic-accident-traffic-accident-zip-0yxX
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2024-05-18T05:50:44Z"

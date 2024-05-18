@@ -8,8 +8,8 @@ def download_weather(location, code, year, month):
     # Format the month and URL
     month_str = f"{year}{month:02d}"  # Ensures the month is two digits
     url = f"https://reg.bom.gov.au/climate/dwo/{month_str}/text/IDCJDW{code}.{month_str}.csv"
-    csv_filename = f"data/weather_csv/{location}_{month_str}.csv"
-    json_filename = f"data/weather_json/{location}_{month_str}.json"
+    csv_filename = f"../data/weather_csv/{location}_{month_str}.csv"
+    json_filename = f"../data/weather_json/{location}_{month_str}.json"
 
     # Fetch and save the CSV file
     response = requests.get(url)
@@ -72,14 +72,14 @@ station = {
 }
 
 
-if not os.path.exists("data"):
-    os.makedirs("data")
+if not os.path.exists("../data"):
+    os.makedirs("../data")
 
-if not os.path.exists("data/weather_csv"):
-    os.makedirs("data/weather_csv")
+if not os.path.exists("../data/weather_csv"):
+    os.makedirs("../data/weather_csv")
 
-if not os.path.exists("data/weather_json"):
-    os.makedirs("data/weather_json")
+if not os.path.exists("../data/weather_json"):
+    os.makedirs("../data/weather_json")
 
 for location, code in station.items():
     for year in [2023, 2024]:
@@ -92,17 +92,17 @@ def merge_json_files(directory_path, output_file_path):
     merged_data = []
 
     for file_name in os.listdir(directory_path):
-        if file_name.endswith('.json'):
+        if file_name.endswith(".json"):
             file_path = os.path.join(directory_path, file_name)
-            with open(file_path, 'r', encoding='utf-8') as file:
+            with open(file_path, "r", encoding="utf-8") as file:
                 data = json.load(file)
                 merged_data.extend(data)
 
-    with open(output_file_path, 'w', encoding='utf-8') as output_file:
+    with open(output_file_path, "w", encoding="utf-8") as output_file:
         json.dump(merged_data, output_file, indent=4)
-        print('Successfully merged and saved data.')
+        print("Successfully merged and saved data.")
 
-directory_path = 'data/weather_json'
-output_file_path = 'data/weather_json/gathered_bom_weather_past.json'
+
+directory_path = "../data/weather_json"
+output_file_path = "../data/weather_json/gathered_bom_weather_past.json"
 merge_json_files(directory_path, output_file_path)
-
