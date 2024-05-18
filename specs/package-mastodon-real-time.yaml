@@ -1,0 +1,25 @@
+include:
+- ./backend/mastodon_real_time/mastodon_real_time.zip
+kind: ArchiveUploadSpec
+name: backend-mastodon-real-time-mastodon-real-time-zip-WfxM
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: mastodon-real-time
+spec:
+  buildcmd: ./build.sh
+  deployment:
+    checksum: {}
+  environment:
+    name: python
+    namespace: ""
+  source:
+    checksum: {}
+    type: url
+    url: archive://backend-mastodon-real-time-mastodon-real-time-zip-WfxM
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2024-05-18T06:26:43Z"

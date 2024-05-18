@@ -1,0 +1,22 @@
+apiVersion: fission.io/v1
+kind: HTTPTrigger
+metadata:
+  creationTimestamp: null
+  name: get-num-toots-by-date
+spec:
+  createingress: true
+  functionref:
+    functionweights: null
+    name: get-num-toots-by-date
+    type: name
+  host: ""
+  ingressconfig:
+    annotations: null
+    host: '*'
+    path: /get-num-toots-by-date/{date}
+    tls: ""
+  method: ""
+  methods:
+  - GET
+  prefix: ""
+  relativeurl: /get-num-toots-by-date/{date}
