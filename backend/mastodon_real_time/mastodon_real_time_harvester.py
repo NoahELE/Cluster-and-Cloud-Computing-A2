@@ -14,14 +14,9 @@ def secret(key: str) -> str:
 
 
 host = secret("ES_URL")
-# host = "https://127.0.0.1:9200"
-# basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
 basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 mastodon = Mastodon(api_base_url='https://aus.social')
-                    # api_base_url='https://aus.social/explore')
-#Set the file name for saving data
-# file_name = f"leatest_data_mastodon.json"
 
 
 def main():
@@ -36,23 +31,17 @@ def main():
                 id=toot["id"],
                 document=toot,
             )
-        # append_data(file_name, toots_list)
         return "OK"
     except Exception as e:
         return str(e)
 
-#-----------------------------------------------------------------------------------------------
-#Get data from Mastodon and return the processed list of posts and the new maximum ID
+
 def get_timeline(mastodon, hashtag='melbourne'):
     toots = mastodon.timeline_hashtag(hashtag, limit=20)
     toots_list = []
 
     if toots:
         for toot in toots:
-            # creat_date = toot['created_at']
-            # if creat_date < dead_line:
-            #     print('End to get data')
-            #     break
             clean_content, sentiment_score = clean_toot(toot['content'])
 
             toot_info = {
@@ -66,18 +55,6 @@ def get_timeline(mastodon, hashtag='melbourne'):
             toots_list.append(toot_info)
 
     return toots_list
-
-
-#-----------------------------------------------------------------------------------------------
-#Save data to file
-# def append_data(file_name, new_data):
-#
-#     with open(file_name, 'a') as f:
-#         #for i in all_data:
-#         for i in new_data:
-#             json.dump(i, f, ensure_ascii=False, separators=(',', ':'))
-#         #json.dump(all_data, f, ensure_ascii=False,indent=4, separators=(',', ':'))
-#             f.write('\n')
 
 
 #-----------------------------------------------------------------------------------------------
@@ -126,8 +103,6 @@ def clean_toot(content):
 
     return content_list, sentiment_score
 
-#-----------------------------------------------------------------------------------------------
-#Get data from Mastodon until specified deadline
 
 
 
