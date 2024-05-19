@@ -1,5 +1,6 @@
 # folders
 data/weather_csv
+data/air_quality_json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -165,3 +166,4 @@ cython_debug/
 .vscode/
 secrets.yaml
 read_shp.ipynb
+transfer_air_quality.py
