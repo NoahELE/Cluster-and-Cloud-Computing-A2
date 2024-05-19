@@ -41,6 +41,6 @@ def insert_past_weather(file_path, index_name):
         print("Error uploading data:", str(e))
 
 
-file_path = "../data/weather_json/gathered_bom_weather_past.json"
+file_path = "data/weather_json/gathered_bom_weather_past.json"
 index_name = "bom_melbourne_weather_past"
 insert_past_weather(file_path, index_name)

@@ -40,6 +40,6 @@ def insert_past_weather(file_path, index_name):
     print("Uploaded data successfully with result:", response)
 
 
-file_path = "../data/health_geo/health_geo.json"
+file_path = "data/health_geo/health_geo.json"
 index_name = "health_geo"
 insert_past_weather(file_path, index_name)

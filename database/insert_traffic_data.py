@@ -43,6 +43,6 @@ def insert_traffic(file_path, index_name, insert_size=1500):
     return outputs
 
 
-file_path = "../data/traffic/traffic_accidents.json"
+file_path = "data/traffic/traffic_accidents.json"
 index_name = "traffic"
 insert_traffic(file_path, index_name)
