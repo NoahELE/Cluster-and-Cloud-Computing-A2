@@ -1,6 +1,6 @@
 # folders
 data/weather_csv
-data/air_quality_json
+data/air_quality_csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -15,19 +15,34 @@ es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
 
 
 def main():
-    """Get average BPM2.5 of a day from Elasticsearch index"""
+    """
+    Get average BPM2.5 of a day from Elasticsearch index
+    """
+
     try:
+        location = request.headers["X-Fission-Params-Location"]
         date_str = request.headers["X-Fission-Params-Date"]
+        days_str = request.headers["X-Fission-Params-Days"]
         dt = datetime.strptime(date_str, "%Y-%m-%d")
         date_str = dt.strftime("%Y-%m-%d")
-        dt1 = dt + timedelta(days=365)
+        days_int = int(days_str)
+        dt1 = dt + timedelta(days=days_int)
         date_str1 = dt1.strftime("%Y-%m-%d")
-        resp = es.search(
-            index="air_quality",
-            query={"range": {"date": {"gte": date_str, "lt": date_str1}}},
-        )
-        bpm25_values = [hit["_source"]["BPM25"] for hit in resp["hits"]["hits"]]
-        return {"ok": True, "avg_BPM25": sum(bpm25_values) / len(bpm25_values)}
+        query = {
+            "query": {
+                "bool": {
+                    "must": [
+                        {"match": {"location_name": location}},
+                        {"range": {"date": {"gte": date_str, "lt": date_str1}}},
+                    ]
+                }
+            },
+            "aggs": {"avg_bpm25": {"avg": {"field": "BPM25"}}},
+            "size": 0,
+        }
+        response = es.search(index="air_quality_all", body=query)
+        avg_bpm25 = response["aggregations"]["avg_bpm25"]["value"]
+        return {"ok": True, "avg_BPM25": avg_bpm25}
     except ValueError as e:
         return {"ok": False, "error": f"date str format is wrong: {str(e)}"}
     except Exception as e:
