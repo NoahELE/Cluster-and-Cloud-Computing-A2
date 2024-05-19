@@ -1,0 +1,242 @@
+[
+  {
+    "Date":"2023-11-1",
+    "Minimum temperature (C)":10.5,
+    "Maximum temperature (C)":17.6,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":35.0
+  },
+  {
+    "Date":"2023-11-2",
+    "Minimum temperature (C)":10.2,
+    "Maximum temperature (C)":17.3,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":35.0
+  },
+  {
+    "Date":"2023-11-3",
+    "Minimum temperature (C)":11.8,
+    "Maximum temperature (C)":17.0,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":33.0
+  },
+  {
+    "Date":"2023-11-4",
+    "Minimum temperature (C)":10.6,
+    "Maximum temperature (C)":18.2,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":41.0
+  },
+  {
+    "Date":"2023-11-5",
+    "Minimum temperature (C)":11.8,
+    "Maximum temperature (C)":22.5,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":31.0
+  },
+  {
+    "Date":"2023-11-6",
+    "Minimum temperature (C)":10.1,
+    "Maximum temperature (C)":28.0,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":37.0
+  },
+  {
+    "Date":"2023-11-7",
+    "Minimum temperature (C)":14.1,
+    "Maximum temperature (C)":32.3,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":37.0
+  },
+  {
+    "Date":"2023-11-8",
+    "Minimum temperature (C)":13.3,
+    "Maximum temperature (C)":23.3,
+    "Rainfall (mm)":4.6,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":35.0
+  },
+  {
+    "Date":"2023-11-9",
+    "Minimum temperature (C)":11.5,
+    "Maximum temperature (C)":22.8,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":35.0
+  },
+  {
+    "Date":"2023-11-10",
+    "Minimum temperature (C)":10.9,
+    "Maximum temperature (C)":31.8,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":24.0
+  },
+  {
+    "Date":"2023-11-11",
+    "Minimum temperature (C)":16.3,
+    "Maximum temperature (C)":19.8,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":44.0
+  },
+  {
+    "Date":"2023-11-12",
+    "Minimum temperature (C)":7.7,
+    "Maximum temperature (C)":20.3,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":44.0
+  },
+  {
+    "Date":"2023-11-13",
+    "Minimum temperature (C)":10.0,
+    "Maximum temperature (C)":20.4,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":35.0
+  },
+  {
+    "Date":"2023-11-14",
+    "Minimum temperature (C)":11.6,
+    "Maximum temperature (C)":16.7,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":26.0
+  },
+  {
+    "Date":"2023-11-15",
+    "Minimum temperature (C)":11.6,
+    "Maximum temperature (C)":18.3,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":33.0
+  },
+  {
+    "Date":"2023-11-16",
+    "Minimum temperature (C)":11.4,
+    "Maximum temperature (C)":19.1,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":null
+  },
+  {
+    "Date":"2023-11-17",
+    "Minimum temperature (C)":10.4,
+    "Maximum temperature (C)":17.8,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":31.0
+  },
+  {
+    "Date":"2023-11-18",
+    "Minimum temperature (C)":13.0,
+    "Maximum temperature (C)":20.2,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":31.0
+  },
+  {
+    "Date":"2023-11-19",
+    "Minimum temperature (C)":13.1,
+    "Maximum temperature (C)":21.2,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":30.0
+  },
+  {
+    "Date":"2023-11-20",
+    "Minimum temperature (C)":14.2,
+    "Maximum temperature (C)":18.1,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":28.0
+  },
+  {
+    "Date":"2023-11-21",
+    "Minimum temperature (C)":13.2,
+    "Maximum temperature (C)":19.9,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":41.0
+  },
+  {
+    "Date":"2023-11-22",
+    "Minimum temperature (C)":12.9,
+    "Maximum temperature (C)":19.5,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":46.0
+  },
+  {
+    "Date":"2023-11-23",
+    "Minimum temperature (C)":13.8,
+    "Maximum temperature (C)":23.2,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":39.0
+  },
+  {
+    "Date":"2023-11-24",
+    "Minimum temperature (C)":16.1,
+    "Maximum temperature (C)":27.6,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":37.0
+  },
+  {
+    "Date":"2023-11-25",
+    "Minimum temperature (C)":16.3,
+    "Maximum temperature (C)":26.2,
+    "Rainfall (mm)":30.2,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":41.0
+  },
+  {
+    "Date":"2023-11-26",
+    "Minimum temperature (C)":14.9,
+    "Maximum temperature (C)":20.9,
+    "Rainfall (mm)":6.8,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":41.0
+  },
+  {
+    "Date":"2023-11-27",
+    "Minimum temperature (C)":13.2,
+    "Maximum temperature (C)":18.5,
+    "Rainfall (mm)":0.4,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":37.0
+  },
+  {
+    "Date":"2023-11-28",
+    "Minimum temperature (C)":13.1,
+    "Maximum temperature (C)":23.4,
+    "Rainfall (mm)":0.2,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":39.0
+  },
+  {
+    "Date":"2023-11-29",
+    "Minimum temperature (C)":15.2,
+    "Maximum temperature (C)":16.1,
+    "Rainfall (mm)":1.4,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":63.0
+  },
+  {
+    "Date":"2023-11-30",
+    "Minimum temperature (C)":14.2,
+    "Maximum temperature (C)":18.0,
+    "Rainfall (mm)":7.8,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":48.0
+  }
+]

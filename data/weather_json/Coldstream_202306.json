@@ -1,0 +1,242 @@
+[
+  {
+    "Date":"2023-06-1",
+    "Minimum temperature (C)":7.8,
+    "Maximum temperature (C)":14.9,
+    "Rainfall (mm)":4.4,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":50
+  },
+  {
+    "Date":"2023-06-2",
+    "Minimum temperature (C)":-0.1,
+    "Maximum temperature (C)":13.8,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":15
+  },
+  {
+    "Date":"2023-06-3",
+    "Minimum temperature (C)":2.3,
+    "Maximum temperature (C)":16.1,
+    "Rainfall (mm)":2.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":22
+  },
+  {
+    "Date":"2023-06-4",
+    "Minimum temperature (C)":5.5,
+    "Maximum temperature (C)":19.7,
+    "Rainfall (mm)":0.6,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":26
+  },
+  {
+    "Date":"2023-06-5",
+    "Minimum temperature (C)":4.0,
+    "Maximum temperature (C)":20.3,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":20
+  },
+  {
+    "Date":"2023-06-6",
+    "Minimum temperature (C)":8.7,
+    "Maximum temperature (C)":17.9,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":33
+  },
+  {
+    "Date":"2023-06-7",
+    "Minimum temperature (C)":11.5,
+    "Maximum temperature (C)":18.3,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":43
+  },
+  {
+    "Date":"2023-06-8",
+    "Minimum temperature (C)":12.6,
+    "Maximum temperature (C)":16.6,
+    "Rainfall (mm)":18.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":35
+  },
+  {
+    "Date":"2023-06-9",
+    "Minimum temperature (C)":7.4,
+    "Maximum temperature (C)":15.1,
+    "Rainfall (mm)":3.8,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":50
+  },
+  {
+    "Date":"2023-06-10",
+    "Minimum temperature (C)":2.9,
+    "Maximum temperature (C)":15.5,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":31
+  },
+  {
+    "Date":"2023-06-11",
+    "Minimum temperature (C)":4.8,
+    "Maximum temperature (C)":14.6,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":20
+  },
+  {
+    "Date":"2023-06-12",
+    "Minimum temperature (C)":7.5,
+    "Maximum temperature (C)":14.8,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":30
+  },
+  {
+    "Date":"2023-06-13",
+    "Minimum temperature (C)":4.2,
+    "Maximum temperature (C)":14.6,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":37
+  },
+  {
+    "Date":"2023-06-14",
+    "Minimum temperature (C)":8.0,
+    "Maximum temperature (C)":13.6,
+    "Rainfall (mm)":3.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":26
+  },
+  {
+    "Date":"2023-06-15",
+    "Minimum temperature (C)":3.7,
+    "Maximum temperature (C)":13.1,
+    "Rainfall (mm)":2.2,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":28
+  },
+  {
+    "Date":"2023-06-16",
+    "Minimum temperature (C)":10.0,
+    "Maximum temperature (C)":16.5,
+    "Rainfall (mm)":0.4,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":41
+  },
+  {
+    "Date":"2023-06-17",
+    "Minimum temperature (C)":10.8,
+    "Maximum temperature (C)":15.9,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":57
+  },
+  {
+    "Date":"2023-06-18",
+    "Minimum temperature (C)":2.5,
+    "Maximum temperature (C)":13.9,
+    "Rainfall (mm)":4.8,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":35
+  },
+  {
+    "Date":"2023-06-19",
+    "Minimum temperature (C)":6.3,
+    "Maximum temperature (C)":11.3,
+    "Rainfall (mm)":11.8,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":41
+  },
+  {
+    "Date":"2023-06-20",
+    "Minimum temperature (C)":1.0,
+    "Maximum temperature (C)":12.3,
+    "Rainfall (mm)":3.6,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":17
+  },
+  {
+    "Date":"2023-06-21",
+    "Minimum temperature (C)":0.0,
+    "Maximum temperature (C)":12.0,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":28
+  },
+  {
+    "Date":"2023-06-22",
+    "Minimum temperature (C)":2.7,
+    "Maximum temperature (C)":13.0,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":43
+  },
+  {
+    "Date":"2023-06-23",
+    "Minimum temperature (C)":6.2,
+    "Maximum temperature (C)":11.0,
+    "Rainfall (mm)":2.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":33
+  },
+  {
+    "Date":"2023-06-24",
+    "Minimum temperature (C)":5.3,
+    "Maximum temperature (C)":14.8,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":44
+  },
+  {
+    "Date":"2023-06-25",
+    "Minimum temperature (C)":6.6,
+    "Maximum temperature (C)":12.2,
+    "Rainfall (mm)":0.4,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":52
+  },
+  {
+    "Date":"2023-06-26",
+    "Minimum temperature (C)":8.9,
+    "Maximum temperature (C)":13.3,
+    "Rainfall (mm)":0.6,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":37
+  },
+  {
+    "Date":"2023-06-27",
+    "Minimum temperature (C)":2.5,
+    "Maximum temperature (C)":12.9,
+    "Rainfall (mm)":1.6,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":35
+  },
+  {
+    "Date":"2023-06-28",
+    "Minimum temperature (C)":6.5,
+    "Maximum temperature (C)":11.8,
+    "Rainfall (mm)":0.4,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":30
+  },
+  {
+    "Date":"2023-06-29",
+    "Minimum temperature (C)":2.4,
+    "Maximum temperature (C)":11.7,
+    "Rainfall (mm)":7.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":31
+  },
+  {
+    "Date":"2023-06-30",
+    "Minimum temperature (C)":5.5,
+    "Maximum temperature (C)":14.6,
+    "Rainfall (mm)":0.0,
+    "Sunshine (hours)":null,
+    "Speed of maximum wind gust (km\/h)":39
+  }
+]
