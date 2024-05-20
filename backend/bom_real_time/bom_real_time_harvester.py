@@ -1,4 +1,5 @@
-# Xinhao Chen 1166113
+# Team 64
+# Kejing Li 1240956, Xin Su 1557128, Yueyang Li 1213643, Xinhao Chen 1166113, Zheqi Shen 1254834
 from datetime import datetime
 
 import requests
@@ -48,7 +49,7 @@ def get_latest_weather():
 
     return {
         "datetime": dt_str,
-            "temperature": temperature,
+        "temperature": temperature,
         "pressure": pressure,
         "rainfall": rainfall,
         "relative_humidity": relative_humidity,

@@ -1,8 +1,10 @@
-import logging, json
-from flask import current_app, request
-from elasticsearch import Elasticsearch, helpers
+# Team 64
+# Kejing Li 1240956, Xin Su 1557128, Yueyang Li 1213643, Xinhao Chen 1166113, Zheqi Shen 1254834
 from datetime import datetime, timedelta
-from haversine import haversine, Unit
+
+from elasticsearch import Elasticsearch
+from flask import request
+from haversine import Unit, haversine
 
 
 def secret(key: str) -> str:
@@ -14,6 +16,7 @@ def secret(key: str) -> str:
 host = secret("ES_URL")
 basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
+
 
 def main():
     """
@@ -33,29 +36,32 @@ def main():
         resp = es.search(
             index="traffic",
             query={"range": {"ACCIDENT_DATE": {"gte": date_str, "lt": date_str1}}},
-            size=10000
+            size=10000,
         )
 
-        hits = resp['hits']['hits']
+        hits = resp["hits"]["hits"]
         accident_count = len(hits)
         center_accidents = 0
-        
+
         for hit in hits:
-            source = hit['_source']
-            accident_location = (source['LATITUDE'], source['LONGITUDE'])
-            
+            source = hit["_source"]
+            accident_location = (source["LATITUDE"], source["LONGITUDE"])
+
             # calculate the distance between accident location and melbourne central
-            distance = haversine(melbourne_center, accident_location, unit=Unit.KILOMETERS)
-            
+            distance = haversine(
+                melbourne_center, accident_location, unit=Unit.KILOMETERS
+            )
+
             if distance <= radius_km:
                 center_accidents += 1
-        
-        return {"ok": True, "accident_count": accident_count, "center_accidents": center_accidents}
+
+        return {
+            "ok": True,
+            "accident_count": accident_count,
+            "center_accidents": center_accidents,
+        }
         # return {"ok": True, "accident_count": resp["hits"]["total"]["value"]}
     except ValueError as e:
         return {"ok": False, "error": f"date str format is wrong: {str(e)}"}
     except Exception as e:
         return {"ok": False, "error": str(e)}
-
-    
-
