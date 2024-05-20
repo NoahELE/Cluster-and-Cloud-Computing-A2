@@ -1,16 +1,21 @@
+# Team 64
+# Kejing Li 1240956, Xin Su 1557128, Yueyang Li 1213643, Xinhao Chen 1166113, Zheqi Shen 1254834
 from datetime import datetime, timedelta
 
 from elasticsearch import Elasticsearch
 from flask import request
+
 
 def secret(key: str) -> str:
     """Read secret from k8s secret volume"""
     with open(f"/secrets/default/secrets/{key}", "r", encoding="utf-8") as f:
         return f.read()
 
+
 host = secret("ES_URL")
 basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
+
 
 def main():
     try:
@@ -21,7 +26,15 @@ def main():
         date_str1 = dt1.strftime("%Y-%m-%d")
         resp = es.search(
             index="mastodon_melbourne",
-            query={"range": {"creat_time": {"gte": date_str, "lt": date_str1, "time_zone": "+10:00"}}},
+            query={
+                "range": {
+                    "creat_time": {
+                        "gte": date_str,
+                        "lt": date_str1,
+                        "time_zone": "+10:00",
+                    }
+                }
+            },
         )
         num_of_toots = resp["hits"]["total"]["value"]
         return {"ok": True, "num_of_toots": num_of_toots}

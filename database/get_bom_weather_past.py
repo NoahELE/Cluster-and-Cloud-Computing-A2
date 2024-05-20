@@ -1,5 +1,8 @@
-import os
+# Team 64
+# Kejing Li 1240956, Xin Su 1557128, Yueyang Li 1213643, Xinhao Chen 1166113, Zheqi Shen 1254834
 import json
+import os
+
 import pandas as pd
 import requests
 

@@ -1,18 +1,23 @@
+# Team 64
+# Kejing Li 1240956, Xin Su 1557128, Yueyang Li 1213643, Xinhao Chen 1166113, Zheqi Shen 1254834
 from datetime import datetime, timedelta
 
 from elasticsearch import Elasticsearch
 from flask import request
+
 
 def secret(key: str) -> str:
     """Read secret from k8s secret volume"""
     with open(f"/secrets/default/secrets/{key}", "r", encoding="utf-8") as f:
         return f.read()
 
+
 # host = "https://127.0.0.1:9200"
 # basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
 host = secret("ES_URL")
 basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
+
 
 def main():
     try:
@@ -30,20 +35,22 @@ def main():
         sentiment_dict = {
             "min_sentiment": resp["hits"]["hits"][0]["_source"]["min_sentiment"],
             "max_sentiment": resp["hits"]["hits"][0]["_source"]["max_sentiment"],
-            "average_sentiment": resp["hits"]["hits"][0]["_source"]["average_sentiment"]
+            "average_sentiment": resp["hits"]["hits"][0]["_source"][
+                "average_sentiment"
+            ],
         }
         bom_dict = {
             "min_temp": resp["hits"]["hits"][0]["_source"]["min_temp"],
             "max_temp": resp["hits"]["hits"][0]["_source"]["max_temp"],
             "average_temp": resp["hits"]["hits"][0]["_source"]["average_temp"],
             "rainfall": resp["hits"]["hits"][0]["_source"]["rainfall"],
-            "wind_gust_speed": resp["hits"]["hits"][0]["_source"]["wind_gust_speed"]
+            "wind_gust_speed": resp["hits"]["hits"][0]["_source"]["wind_gust_speed"],
         }
 
         resp_dict = {
             "sentiment_dict": sentiment_dict,
             "num_of_toots": num_of_toots,
-            "bom_dict": bom_dict
+            "bom_dict": bom_dict,
         }
         return {"ok": True, "resp_dict": resp_dict}
     except ValueError as e:
