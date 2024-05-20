@@ -60,7 +60,6 @@ def main():
             "accident_count": accident_count,
             "center_accidents": center_accidents,
         }
-        # return {"ok": True, "accident_count": resp["hits"]["total"]["value"]}
     except ValueError as e:
         return {"ok": False, "error": f"date str format is wrong: {str(e)}"}
     except Exception as e:

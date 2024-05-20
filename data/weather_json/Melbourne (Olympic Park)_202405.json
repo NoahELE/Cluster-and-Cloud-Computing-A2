@@ -128,8 +128,15 @@
   {
     "Date":"2024-05-19",
     "Minimum temperature (C)":6.2,
-    "Maximum temperature (C)":null,
+    "Maximum temperature (C)":15.4,
     "Rainfall (mm)":0.0,
+    "Speed of maximum wind gust (km\/h)":26.0
+  },
+  {
+    "Date":"2024-05-20",
+    "Minimum temperature (C)":10.2,
+    "Maximum temperature (C)":null,
+    "Rainfall (mm)":3.2,
     "Speed of maximum wind gust (km\/h)":null
   }
 ]
