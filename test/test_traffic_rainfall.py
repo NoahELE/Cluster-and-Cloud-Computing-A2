@@ -1,5 +1,4 @@
 import requests
-from datetime import datetime
 
 
 def test_traffic_count():
