@@ -27,11 +27,12 @@ def main():
         date_str1 = dt1.strftime("%Y-%m-%d")
         resp = es.search(
             index="bom_melbourne_weather",
-            size=100,
+            size=0,
             query={"range": {"datetime": {"gte": date_str, "lt": date_str1}}},
+            aggs={"avg_temp": {"avg": {"field": "temperature"}}},
         )
-        temps = [hit["_source"]["temperature"] for hit in resp["hits"]["hits"]]
-        return {"ok": True, "avg_temp": sum(temps) / len(temps)}
+        avg_temp = resp["aggregations"]["avg_temp"]["value"]
+        return {"ok": True, "avg_temp": avg_temp}
     except ValueError as e:
         return {"ok": False, "error": f"date str format is wrong: {str(e)}"}
     except Exception as e:
