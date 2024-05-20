@@ -40,5 +40,28 @@ Code in `data/mastodon_past` directory
 
 - Get toots ID, create time, content, language, sentiment and tag for each toot
 
+### EPA Past Data
+
+Data Source: [Environment Protection Authority](https://www.epa.vic.gov.au/)
+
+Code in `data/air_quality_json` directory
+
+- Get location id, location name, BPM2.5, date and time for stations that monitor BPM2.5 in Melbourne. 
+
+### DataVic Past Data
+
+Data Source: [DataVic](https://www.data.vic.gov.au/)
+
+Code in `data/traffic` directory
+
+- Get accident NO, accident date, accident time, latitude and longitude for each accident within 15 km of Melbourne Central.
+
+### SUDO Past Data
+
+Data Source: [Spatial Urban Data Observatory](https://sudo.eresearch.unimelb.edu.au)
+
+Code in `data/health_geo` directory
+
+- Get sa2 code, asthma count, copd count, code of geographic feature and name of geographic feature in Great Melbourne. 
 
 
