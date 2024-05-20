@@ -9,6 +9,8 @@ The repository contains the code and data for the COMP90024 Cluster and Cloud Co
 | Xinhao Chen | 1166113    | xinhaoc1@student.unimelb.edu.au |
 | Yueyang Li  | 1213643    | yueyangl4@student.unimelb.edu.au|
 | Xin Su      | 1557128    | xsu6@student.unimelb.edu.au     |
+| Zheqi Shen  | 1254834    | zheqis@student.unimelb.edu.au   |
+| Kejing Li   | 1240956    | kejingl1@student.unimelb.edu.au
 
 ## Installation
 
