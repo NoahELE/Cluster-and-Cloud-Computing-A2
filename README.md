@@ -12,6 +12,17 @@ The repository contains the code and data for the COMP90024 Cluster and Cloud Co
 | Zheqi Shen  | 1254834    | zheqis@student.unimelb.edu.au   |
 | Kejing Li   | 1240956    | kejingl1@student.unimelb.edu.au
 
+## Repository Contents
+- Frontend: Jupyter notebooks source code of the client part of the application,
+contains code for retrieve data through `REST` API, perform data analysis and visualization.
+- Backend: The application back-end source code, contains code for data harvester, store harvested data to `ElasticSearch`,
+`Fission` trigger to retrieve data from `ElasticSearch`, and all necessary component to create `Fission` packages.
+- Test: The application back-end automated tests for `Fission` routes.
+- Database: Contain code to create `ElasticSearch` index and insert data into `ElasticSearch`.
+- Data: Data that are inserted into `ElasticSearch`.
+- Documentation: Documentation on backend API.
+
+
 ## Installation
 
 - Clone the repository
@@ -66,65 +77,4 @@ Code in `data/health_geo` directory
 
 ## Fission Spec
 
-### Mastodon Harvester
 
-##### create mastodon-real-time package:  
-fission package create --spec \
---sourcearchive ./backend/mastodon_real_time/mastodon_real_time.zip
---env python\
---name mastodon-real-time\
---buildcmd './build.sh'
-
-##### create mastodon-real-time-harvester function:
-fission fn create --spec \
-  --name mastodon-real-time-harvester\
-  --pkg mastodon-real-time\
-  --env python\
-  --entrypoint "mastodon_real_time_harvester.main"\
-  --secret secrets
-  
-##### create mastodon-real-time-harvester timer trigger:
-fission timer create --spec\
---name mastodon-real-time-harvester-every-30minutes\
---function mastodon-real-time-harvester --cron "@every 30m"
-
-### Get Number of Toots by Date Route
-
-##### create get-num-toots-by-date function:
-fission fn create --spec \
---name get-num-toots-by-date\
-  --pkg mastodon-real-time\
-  --env python\
-  --entrypoint "get_num_toots_by_date.main"\
-  --secret secrets
-  
-##### create get-num-toots-by-date trigger:
-fission route create --spec \
---url /get-num-toots-by-date/{date} \
---function get-num-toots-by-date \
---name get-num-toots-by-date \
---createingress
-
-### Get Integration of Weather and Mastodon by Date Trigger
-
-##### create get-bom-mastodon-by-date package:  
-fission package create --spec \
---sourcearchive ./backend/bom_mastodon/get_bom_mastodon_by_date.zip  \
---env python  \
---name get-bom-mastodon-by-date  \
---buildcmd './build.sh'
-
-##### create get-bom-mastodon-by-date function:
-fission fn create --spec \
---name get-bom-mastodon-by-date\
---pkg get-bom-mastodon-by-date\
---env python\
---entrypoint "get_bom_mastodon_by_date.main"\
---secret secrets
-  
-##### create get-bom-mastodon-by-date trigger:
-fission route create --spec \
---url /bom-mastodon/{date} \
---function get-bom-mastodon-by-date \
---name get-bom-mastodon-by-date \
---createingress
