@@ -76,7 +76,8 @@ fission package create --spec \
 --buildcmd './build.sh'
 
 ##### create mastodon-real-time-harvester function:
-fission fn create --spec --name mastodon-real-time-harvester\
+fission fn create --spec \
+  --name mastodon-real-time-harvester\
   --pkg mastodon-real-time\
   --env python\
   --entrypoint "mastodon_real_time_harvester.main"\
