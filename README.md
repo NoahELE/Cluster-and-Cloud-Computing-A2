@@ -66,7 +66,7 @@ Code in `data/health_geo` directory
 
 ## Fission Spec
 
-create get-bom-mastodon-by-date package:
+create get-bom-mastodon-by-date package:  
 fission package create --spec --sourcearchive ./backend/bom_mastodon/get_bom_mastodon_by_date.zip  --env python  --name get-bom-mastodon-by-date  --buildcmd './build.sh'
 
 create get-bom-mastodon-by-date function:
