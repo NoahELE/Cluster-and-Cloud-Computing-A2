@@ -14,7 +14,7 @@ The repository contains the code and data for the COMP90024 Cluster and Cloud Co
 
 ## Repository Contents
 - Frontend: Jupyter notebooks source code of the client part of the application,
-contains code for retrieve data through `REST` API, perform data analysis and visualization.
+contains code for retrieve data through `REST` API, perform data analysis and visualisation.
 - Backend: The application back-end source code, contains code for data harvester, store harvested data to `ElasticSearch`,
 `Fission` trigger to retrieve data from `ElasticSearch`, and all necessary component to create `Fission` packages.
 - Test: The application back-end automated tests for `Fission` routes.
@@ -41,7 +41,15 @@ Data Source: [Bureau of Meteorology](https://reg.bom.gov.au/)
 Code in `backend/bom_real_time` directory
 
 - Harvest real-time weather data from BOM API and store in `Elasticsearch` every 30 minutes
-- Expose `/bom-real-time/avg-day-temp/{date}` to get the average temperature of a day\
+- Expose `/bom-real-time/avg-day-temp/{date}` to get the average temperature of a day
+
+### BOM Past Data
+
+Data Source: [Bureau of Meteorology](https://reg.bom.gov.au/)
+
+Code in `database/get_bom_weather_past.py` and `data/weather_json` directory
+
+- Get min and max temperature, rainfall (mm) and max wind speed for each day from April 2023 to May 2024
 
 ### Mastodon Past Data
 
@@ -73,8 +81,20 @@ Data Source: [Spatial Urban Data Observatory](https://sudo.eresearch.unimelb.edu
 
 Code in `data/health_geo` directory
 
-- Get sa2 code, asthma count, copd count, code of geographic feature and name of geographic feature in Greater Melbourne.
+- Get SA2 code, asthma count, copd count, code of geographic feature and name of geographic feature in Greater Melbourne.
 
 ## Fission Spec
 
+All details in folder `docs`
 
+## Front-end
+
+Jupyter notebooks in `frontend` directory, click `Run All` to execuate all cells to retrieve data through RESTful API and visualise data
+
+`air_and_health.ipynb`: Focus on scenario - relationship between weather & air quality, air quality & health
+
+`mastodon.ipynb`: Focus on scenario - relationship between weather & mastodon sentiment score
+
+`traffic_and_toots.ipynb`: Focus on scenario - relationship between weather & traffic accidents, weather & number of mastodon toots
+
+`frontend_merged.ipynb`: A typesetted collection of the former three files
