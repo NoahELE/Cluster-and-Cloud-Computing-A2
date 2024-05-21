@@ -12,8 +12,6 @@ def secret(key: str) -> str:
         return f.read()
 
 
-# host = "https://127.0.0.1:9200"
-# basic_auth = ("elastic", "gHcmDFVtcTaCkB4QPVHSYkEe7bTbYd!x")
 host = secret("ES_URL")
 basic_auth = (secret("ES_USERNAME"), secret("ES_PASSWORD"))
 es = Elasticsearch(host, basic_auth=basic_auth, verify_certs=False)
